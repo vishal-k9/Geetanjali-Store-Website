@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+<script >
+{% block jquery %}
+window.PUM.setData(1, 1,"ProductInfo");
+
+{% endblock %}
+</script>
+
+{% block content_slider %}
+{% endblock %}
+
+{% block content_cat %}
+{% endblock %}
+
+{% block content_product %}
+
+{% include "order_summary_short.html" with order=order %}
+
+{% if order.status!= "paid" %}
+<span class='pm-button' id='0333D578E8854471E66DB705B60C1742' onclick="window.PUM.pay()">
+  <span class="state active">
+    <input type="image" src="https://file.payumoney.com/images/payby_payumoney/new_buttons/21.png" width="131" height="37">
+  </span>
+  <span class="state clicked" style="display:none" >
+    <input type="image" src="https://file.payumoney.com/images/payby_payumoney/new_buttons/submitted/21.png" width="131" height="37">
+  </span>
+</span>
+{% endif %}
+
+<p><b>Please print for your records</b></p>
+{% endblock %}

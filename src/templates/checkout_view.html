@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+
+
+{% block content_slider %}
+{% endblock %}
+
+{% block content_cat %}
+{% endblock %}
+
+{% block content_product %}
+
+
+{% if not user_can_continue %}
+
+<div class='col-sm-12'>
+<p class='lead'>Continue as Guest</p>
+<form method='POST' action=''>{% csrf_token %}
+{{ form|crispy }}
+<br>
+<input type='submit' class='btn btn-success' value='Continue as Guest' />
+
+</form>
+<br>
+<br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+{% else %}
+
+<div class='col-sm-4 col-sm-offset-4 text-center'>
+
+{% include "order_summary_short.html" with order=order %}
+<p>
+ <a href='{% url "order_address" %}'>Change an Address</a>
+</p>
+
+<br/>
+<form method='POST' action="{% url 'checkout_final' %}">{% csrf_token %}
+<input type='hidden' name='payment_token' value='ABC' />
+<p><b><button type='submit'>Complete Order</button></b>
+
+
+
+
+                        
+
+
+                     
+
+
+
+</p>
+</form>
+
+	
+
+</div>
+
+
+
+{% endif %}
+
+
+{% endblock %}
+

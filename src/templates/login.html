@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block content_slider %}
+{% endblock %}
+
+{% block content_cat %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block content_product %}
+  <h2>Login</h2>
+  <form method="post">
+  	<!-- wow -->
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}
+
+

@@ -1,0 +1,14 @@
+LOAD_JSON = {
+    'DATA_DIRS': [BASE_DIR],
+}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'vishalk9$geetanjali_store',
+        'USER': 'vishalk9',
+        'PASSWORD': 'bossboss',
+        'HOST': 'vishalk9.mysql.pythonanywhere-services.com',   # Or an IP Address that your DB is hosted on
+        'PORT': '',
+    }
+}

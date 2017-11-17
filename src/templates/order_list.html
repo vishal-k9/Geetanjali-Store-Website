@@ -1,0 +1,25 @@
+
+{% extends "index.html" %}
+
+{% block content_slider %}
+{% endblock %}
+
+{% block content_cat %}
+{% endblock %}
+
+{% block content_product %}
+
+
+{% for object in object_list %}
+
+<li>
+{{ object.id }}
+{{ object.cart.items.all }}
+
+
+</li>
+
+{% endfor %}
+
+
+{% endblock %}

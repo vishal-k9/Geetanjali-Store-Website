@@ -1,0 +1,75 @@
+
+
+
+{% extends "index.html" %}
+{% load staticfiles %}
+
+
+
+
+			{% block content_product %}	
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">Features Items</h2>
+						{% for obj in object_list %}
+							<div class="col-sm-4">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											{% if obj.image %}
+											<img height="250" src={{ obj.image.url }}   alt="" />
+											{% endif %}
+											<h2>₹{{ obj.rate }}</h2>
+											<a href='{{ obj.get_absolute_url }}'><p>{{ obj.name }}</p></a>
+											
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+										<div class="product-overlay">
+											<div class="overlay-content">
+												<h2>₹{{ obj.rate }}</h2>
+												<p style="text-transform: uppercase;"><b>{{ obj.name }}</b></p>
+
+												<a href='{{ obj.get_absolute_url }}' class="btn btn-default add-to-cart">View</a>
+												<br>
+												
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<div class="choose">
+										<ul class="nav nav-pills nav-justified">
+											<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+											<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+						
+						<!--  -->
+						
+						<!-- <ul class="pagination">
+							<li class="active"><a href="">1</a></li>
+							<li><a href="">2</a></li>
+							<li><a href="">3</a></li>
+							<li><a href="">&raquo;</a></li>
+						</ul> -->
+					</div><!--features_items-->
+					<div class="pagination">
+							<span class="step-links">
+							{% if object_list.has_previous %}
+								<a href="?page={{ object_list.previous_page_number }} {% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+							{% endif %}
+
+							<span class="current">
+								Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+							</span>
+
+							{% if object_list.has_next %}
+								<a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+							{% endif %}
+							</span>
+						</div>
+				</div>
+				{% endblock %}
+			
